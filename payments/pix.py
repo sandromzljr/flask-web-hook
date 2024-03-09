@@ -5,7 +5,7 @@ class Pix:
     def __init__(self) -> None:
         pass
 
-    def create_payment(self):
+    def create_payment(self, base_dir=""):
         # Gerando um uuid aleatório
         bank_payment_id = str(uuid.uuid4())
 
@@ -14,7 +14,7 @@ class Pix:
         hash_payment = "https://github.com/sandromzljr/flask-web-hook"
 
         img = qrcode.make(hash_payment)
-        img.save(f"static/img/qr_code_payment_{bank_payment_id}.png")
+        img.save(f"{base_dir}static/img/qr_code_payment_{bank_payment_id}.png")
 
         return {
             "bank_payment_id": bank_payment_id,
